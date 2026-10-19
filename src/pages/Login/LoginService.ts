@@ -4,7 +4,7 @@ import type {
   RegisterCredentials,
   RegisteredUser,
   User,
-} from './Login.types';
+} from './LoginTypes';
 
 const API_BASE = '/api/users';
 const STORAGE_KEY = 'muscle_tracker_current_user';

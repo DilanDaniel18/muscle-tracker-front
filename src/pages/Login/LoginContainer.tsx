@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import type { FormEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
 import type {
   AuthViewMode,
   FormErrors,
@@ -7,11 +8,12 @@ import type {
   RegisteredUser,
   User,
   UserSex,
-} from './Login.types';
-import { loginService } from './Login.service';
-import { LoginPage } from './Login.page';
+} from './LoginTypes';
+import { loginService } from './LoginService';
+import { LoginScreen } from './LoginScreen';
 
 export function LoginContainer() {
+  const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [pendingUser, setPendingUser] = useState<RegisteredUser | null>(null);
   const [mode, setMode] = useState<AuthViewMode>('login');
@@ -109,11 +111,7 @@ export function LoginContainer() {
     try {
       const user = await loginService.login(loginValues);
       setCurrentUser(user);
-      setMode('welcome');
-      setNotification({
-        type: 'success',
-        message: `¡Bienvenido de vuelta, ${user.name || 'Atleta'}!`,
-      });
+      navigate('/dashboard');
     } catch (err: unknown) {
       setNotification({
         type: 'error',
@@ -213,11 +211,7 @@ export function LoginContainer() {
 
       setCurrentUser(updatedUser);
       setPendingUser(null);
-      setMode('welcome');
-      setNotification({
-        type: 'success',
-        message: '¡Datos guardados con éxito! Tu perfil de atleta está configurado.',
-      });
+      navigate('/dashboard');
     } catch (err: unknown) {
       setNotification({
         type: 'error',
@@ -239,11 +233,7 @@ export function LoginContainer() {
       loginService.setCurrentUser(basicUser);
       setCurrentUser(basicUser);
       setPendingUser(null);
-      setMode('welcome');
-      setNotification({
-        type: 'info',
-        message: 'Podrás completar tus medidas físicas más adelante desde tu perfil.',
-      });
+      navigate('/dashboard');
     } else {
       setMode('login');
     }
@@ -260,8 +250,12 @@ export function LoginContainer() {
     });
   };
 
+  const handleNavigateToDashboard = () => {
+    navigate('/dashboard');
+  };
+
   return (
-    <LoginPage
+    <LoginScreen
       mode={mode}
       isLoading={isLoading}
       notification={notification}
@@ -281,6 +275,7 @@ export function LoginContainer() {
       onSkipAdditional={handleSkipAdditional}
       onLogout={handleLogout}
       onDismissNotification={handleDismissNotification}
+      onNavigateToDashboard={handleNavigateToDashboard}
     />
   );
 }
