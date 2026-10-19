@@ -1,5 +1,5 @@
-import type { LoginPageProps, UserSex } from './Login.types.ts';
-import './Login.css';
+import type { LoginPageProps, UserSex } from './LoginTypes';
+import './LoginScreen.css';
 
 function DumbbellBoltIcon() {
   return (
@@ -41,7 +41,7 @@ const PARTICLES = Array.from({ length: 28 }, (_, i) => ({
   opacity: 0.2 + ((i % 5) * 0.15),
 }));
 
-export function LoginPage({
+export function LoginScreen({
   mode,
   isLoading,
   notification,
@@ -61,6 +61,7 @@ export function LoginPage({
   onSkipAdditional,
   onLogout,
   onDismissNotification,
+  onNavigateToDashboard,
 }: LoginPageProps) {
   return (
     <div className="mt-login-layout">
@@ -492,9 +493,9 @@ export function LoginPage({
                 <button
                   type="button"
                   className="mt-btn-primary"
-                  onClick={() => alert('¡Listo para registrar tus entrenamientos!')}
+                  onClick={onNavigateToDashboard}
                 >
-                  Ir a Mis Entrenamientos
+                  Ir al Dashboard
                 </button>
 
                 <button
@@ -513,4 +514,5 @@ export function LoginPage({
   );
 }
 
-export default LoginPage;
+export const LoginPage = LoginScreen;
+export default LoginScreen;

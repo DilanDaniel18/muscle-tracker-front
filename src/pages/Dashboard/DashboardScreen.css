@@ -1,0 +1,209 @@
+.mt-dashboard-layout {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  position: relative;
+}
+
+.mt-dashboard-main {
+  flex: 1;
+  width: 100%;
+  padding: 2.5rem 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.mt-dashboard-container {
+  width: 100%;
+  max-width: 1360px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Hero Section */
+.mt-dashboard-hero {
+  position: relative;
+  padding: 2.5rem;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(
+    135deg,
+    rgba(14, 21, 36, 0.85) 0%,
+    rgba(20, 28, 46, 0.5) 100%
+  );
+  border: 1px solid var(--border-subtle);
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.4);
+}
+
+.mt-dashboard-hero::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(56, 189, 248, 0.18) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.mt-dashboard-hero-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 720px;
+}
+
+.mt-dashboard-badge {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.mt-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent-cyan);
+  box-shadow: 0 0 8px var(--accent-cyan);
+  animation: mt-pulse 2s infinite ease-in-out;
+}
+
+@keyframes mt-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.85);
+  }
+}
+
+.mt-dashboard-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.mt-dashboard-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Empty State / Workspace Placeholder */
+.mt-dashboard-empty-state {
+  width: 100%;
+}
+
+.mt-empty-card {
+  padding: 4rem 2rem;
+  border-radius: var(--radius-lg);
+  background: rgba(14, 21, 36, 0.5);
+  border: 1px dashed var(--border-medium);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.25rem;
+  transition: border-color 0.2s ease;
+}
+
+.mt-empty-card:hover {
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+.mt-empty-icon-wrap {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.15);
+}
+
+.mt-empty-icon {
+  font-size: 32px;
+  color: var(--accent-cyan);
+}
+
+.mt-empty-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.mt-empty-description {
+  max-width: 540px;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.mt-empty-status-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.9rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+.mt-status-tag-icon {
+  font-size: 16px;
+  color: var(--accent-cyan);
+}
+
+@media (max-width: 768px) {
+  .mt-dashboard-main {
+    padding: 1.5rem 1rem;
+  }
+
+  .mt-dashboard-hero {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .mt-dashboard-title {
+    font-size: 1.65rem;
+  }
+
+  .mt-dashboard-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .mt-empty-card {
+    padding: 2.5rem 1.25rem;
+  }
+}

@@ -85,4 +85,5 @@ export interface LoginPageProps {
   onSkipAdditional: () => void;
   onLogout: () => void;
   onDismissNotification: () => void;
+  onNavigateToDashboard?: () => void;
 }

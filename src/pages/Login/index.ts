@@ -1,5 +1,5 @@
-export { LoginContainer as LoginPage, LoginContainer } from './Login.container';
-export { LoginPage as LoginPresentationPage } from './Login.page';
-export { loginService, LoginService } from './Login.service';
-export * from './Login.types';
-export default './Login.container';
+export { LoginContainer as LoginPage, LoginContainer } from './LoginContainer';
+export { LoginScreen as LoginPresentationPage, LoginScreen } from './LoginScreen';
+export { loginService, LoginService } from './LoginService';
+export * from './LoginTypes';
+export default './LoginContainer';
