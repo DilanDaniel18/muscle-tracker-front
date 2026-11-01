@@ -1,3 +1,6 @@
+@layer theme, base, components, utilities;
+
+@layer components {
 .mt-topbar {
   position: sticky;
   top: 0;
@@ -13,16 +16,12 @@
 }
 
 .mt-topbar-container {
-  max-width: 1360px;
   height: 100%;
-  margin: 0 auto;
-  padding: 0 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-/* Left: Brand hyperlink */
 .mt-topbar-left {
   display: flex;
   align-items: center;
@@ -35,7 +34,6 @@
   text-decoration: none;
   cursor: pointer;
   padding: 0.4rem 0.6rem;
-  margin-left: -0.6rem;
   border-radius: var(--radius-md);
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -88,7 +86,6 @@
   filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.35));
 }
 
-/* Right: User Menu Area */
 .mt-topbar-right {
   position: relative;
   display: flex;
@@ -98,10 +95,8 @@
 .mt-topbar-user-btn {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
   background: rgba(18, 26, 42, 0.8);
   border: 1px solid var(--border-medium);
-  padding: 0.35rem 0.75rem 0.35rem 0.4rem;
   border-radius: var(--radius-full);
   cursor: pointer;
   color: var(--text-primary);
@@ -164,12 +159,10 @@
   transform: rotate(180deg);
 }
 
-/* Dropdown Menu */
 .mt-topbar-dropdown {
   position: absolute;
   top: calc(100% + 10px);
   right: 0;
-  min-width: 240px;
   background: rgba(14, 21, 36, 0.96);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -187,6 +180,7 @@
     opacity: 0;
     transform: translateY(-6px) scale(0.97);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -277,24 +271,4 @@
 .mt-dropdown-item-danger:hover .mt-dropdown-icon {
   color: #fca5a5;
 }
-
-/* Responsive adjustments */
-@media (max-width: 640px) {
-  .mt-topbar-container {
-    padding: 0 1rem;
-  }
-
-  .mt-topbar-username {
-    display: none;
-  }
-
-  .mt-topbar-user-btn {
-    padding: 0.25rem;
-    gap: 0.25rem;
-  }
-
-  .mt-topbar-dropdown {
-    right: 0;
-    min-width: 220px;
-  }
 }

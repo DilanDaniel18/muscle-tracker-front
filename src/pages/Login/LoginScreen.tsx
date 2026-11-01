@@ -64,8 +64,8 @@ export function LoginScreen({
   onNavigateToDashboard,
 }: LoginPageProps) {
   return (
-    <div className="mt-login-layout">
-      <section className="mt-brand-panel" aria-label="Identidad de la marca">
+    <div className="mt-login-layout flex flex-col lg:flex-row">
+      <section className="mt-brand-panel flex-none lg:flex-[1.15] px-6 py-12 sm:px-10 sm:py-14 lg:p-16 xl:p-20 text-center lg:text-left" aria-label="Identidad de la marca">
         <div className="mt-aurora-glow glow-1" aria-hidden="true" />
         <div className="mt-aurora-glow glow-2" aria-hidden="true" />
         <div className="mt-aurora-glow glow-3" aria-hidden="true" />
@@ -89,27 +89,27 @@ export function LoginScreen({
           ))}
         </div>
 
-        <div className="mt-brand-content">
-          <div className="mt-brand-title-wrap">
+        <div className="mt-brand-content mx-auto lg:mx-0">
+          <div className="mt-brand-title-wrap mb-4 lg:mb-7">
             <h1 className="mt-brand-title">
-              <span className="mt-brand-title-row">
+              <span className="mt-brand-title-row justify-center lg:justify-start">
                 Muscle
                 <DumbbellBoltIcon />
               </span>
-              <span className="mt-brand-title-row">
+              <span className="mt-brand-title-row justify-center lg:justify-start">
                 Tracker
               </span>
             </h1>
           </div>
           <p className="mt-brand-subtitle">
             Control y seguimiento de tus
-            <br />
+            <br className="hidden lg:inline" />
             entrenamientos, de manera sencilla.
           </p>
         </div>
       </section>
 
-      <main className="mt-auth-panel" aria-label="Formulario de inicio y registro">
+      <main className="mt-auth-panel flex-1 px-5 py-10 sm:px-8 sm:py-14 lg:px-9 lg:py-16 border-t border-white/5 lg:border-t-0 lg:border-l lg:border-white/5" aria-label="Formulario de inicio y registro">
         <div className="mt-auth-container">
           {notification && (
             <div

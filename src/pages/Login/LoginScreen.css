@@ -1,3 +1,6 @@
+@layer theme, base, components, utilities;
+
+@layer components {
 .mt-login-layout {
   display: flex;
   min-height: 100vh;
@@ -10,13 +13,11 @@
 }
 
 .mt-brand-panel {
-  flex: 1.15;
   background-color: #030712;
   color: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 64px 80px;
   position: relative;
   overflow: hidden;
   box-sizing: border-box;
@@ -176,7 +177,6 @@
 }
 
 .mt-brand-title-wrap {
-  margin-bottom: 28px;
 }
 
 .mt-brand-title {
@@ -226,17 +226,14 @@
 }
 
 .mt-auth-panel {
-  flex: 1;
   background: radial-gradient(circle at 60% 30%, #101726 0%, #0a0e17 75%);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 48px 36px;
   box-sizing: border-box;
   position: relative;
   z-index: 2;
-  border-left: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .mt-auth-container {
@@ -681,38 +678,4 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   border-color: #384d70;
   color: #ffffff;
 }
-
-@media (max-width: 900px) {
-  .mt-login-layout {
-    flex-direction: column;
-  }
-
-  .mt-brand-panel {
-    flex: none;
-    padding: 50px 28px 40px 28px;
-    text-align: center;
-  }
-
-  .mt-brand-content {
-    margin: 0 auto;
-  }
-
-  .mt-brand-title-row {
-    justify-content: center;
-  }
-
-  .mt-brand-title-wrap {
-    margin-bottom: 16px;
-  }
-
-  .mt-brand-subtitle br {
-    display: none;
-  }
-
-  .mt-auth-panel {
-    flex: 1;
-    padding: 40px 24px 60px 24px;
-    border-left: none;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-  }
 }

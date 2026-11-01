@@ -64,7 +64,6 @@ export function TopBar({
     }
   }, [initialUser]);
 
-  // Close dropdown on click outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent | TouchEvent) {
       if (
@@ -121,8 +120,7 @@ export function TopBar({
 
   return (
     <header className="mt-topbar" role="banner">
-      <div className="mt-topbar-container">
-        {/* Left: Brand hyperlink to /dashboard */}
+      <div className="mt-topbar-container w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mt-topbar-left">
           <Link
             to="/dashboard"
@@ -139,11 +137,10 @@ export function TopBar({
           </Link>
         </div>
 
-        {/* Right: User Menu */}
         <div className="mt-topbar-right" ref={dropdownRef}>
           <button
             type="button"
-            className={`mt-topbar-user-btn ${isOpen ? 'active' : ''}`}
+            className={`mt-topbar-user-btn p-1 gap-1 sm:py-1.5 sm:pl-1.5 sm:pr-3 sm:gap-2.5 ${isOpen ? 'active' : ''}`}
             onClick={handleToggleDropdown}
             aria-expanded={isOpen}
             aria-haspopup="menu"
@@ -159,7 +156,9 @@ export function TopBar({
               )}
             </div>
             {currentUser?.name && (
-              <span className="mt-topbar-username">{currentUser.name}</span>
+              <span className="mt-topbar-username hidden sm:inline-block truncate max-w-[120px] md:max-w-[160px]">
+                {currentUser.name}
+              </span>
             )}
             <span
               className={`material-symbols-outlined mt-topbar-chevron ${
@@ -171,10 +170,9 @@ export function TopBar({
             </span>
           </button>
 
-          {/* Dropdown Menu */}
           {isOpen && (
             <div
-              className="mt-topbar-dropdown"
+              className="mt-topbar-dropdown min-w-[220px] sm:min-w-[250px]"
               role="menu"
               aria-label="Opciones de cuenta"
             >
