@@ -109,7 +109,7 @@ export function TopBar({
     if (onLogout) {
       onLogout();
     } else {
-      loginService.logout();
+      void loginService.logout();
       navigate('/');
     }
   };

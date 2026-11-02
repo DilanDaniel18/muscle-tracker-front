@@ -50,11 +50,48 @@
   pointer-events: none;
 }
 
+.mt-dashboard-hero-row {
+  position: relative;
+  z-index: 1;
+}
+
 .mt-dashboard-hero-content {
   position: relative;
   z-index: 1;
   display: flex;
   flex-direction: column;
+}
+
+.mt-dashboard-onboarding-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  background: rgba(37, 99, 235, 0.18);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  color: #f8fafc;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  align-self: flex-start;
+}
+
+.mt-dashboard-onboarding-btn:hover {
+  background: #2563eb;
+  border-color: #60a5fa;
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.45);
+}
+
+.mt-dashboard-onboarding-btn .material-symbols-outlined {
+  font-size: 20px;
+  color: #38bdf8;
+}
+
+.mt-dashboard-onboarding-btn:hover .material-symbols-outlined {
+  color: #ffffff;
 }
 
 .mt-dashboard-badge {
@@ -106,6 +143,111 @@
 .mt-dashboard-subtitle {
   color: var(--text-secondary);
   line-height: 1.5;
+}
+
+/* Profile Summary Section */
+.mt-dashboard-profile-summary {
+  border-radius: var(--radius-lg);
+  background: rgba(14, 21, 36, 0.72);
+  border: 1px solid var(--border-subtle);
+  backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mt-profile-summary-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mt-profile-summary-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mt-profile-summary-icon {
+  font-size: 28px;
+  color: var(--accent-cyan);
+  padding: 10px;
+  border-radius: 12px;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.22);
+}
+
+.mt-profile-summary-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.mt-profile-summary-subtitle {
+  font-size: 13px;
+  color: #94a3b8;
+  margin: 2px 0 0 0;
+}
+
+.mt-profile-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px;
+}
+
+.mt-profile-metric-box {
+  background: rgba(8, 12, 20, 0.65);
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mt-profile-metric-label {
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #64748b;
+}
+
+.mt-profile-metric-val {
+  font-size: 16px;
+  font-weight: 700;
+  color: #f8fafc;
+}
+
+.mt-profile-activities-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mt-profile-activity-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.mt-profile-activity-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 13px;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.16);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: #e2e8f0;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.mt-profile-activity-tag .material-symbols-outlined {
+  font-size: 16px;
+  color: #38bdf8;
 }
 
 .mt-dashboard-empty-state {

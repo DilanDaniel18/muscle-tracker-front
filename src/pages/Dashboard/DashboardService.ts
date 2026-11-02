@@ -6,8 +6,16 @@ export class DashboardService {
     return loginService.getCurrentUser();
   }
 
+  getToken(): string | null {
+    return loginService.getToken();
+  }
+
+  verifySession(): Promise<User | null> {
+    return loginService.verifySession();
+  }
+
   logout(): void {
-    loginService.logout();
+    void loginService.logout();
   }
 }
 

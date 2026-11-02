@@ -46,11 +46,33 @@ export function LoginContainer() {
   });
 
   useEffect(() => {
-    const user = loginService.getCurrentUser();
-    if (user) {
-      setCurrentUser(user);
+    let isMounted = true;
+    const cachedUser = loginService.getCurrentUser();
+    const token = loginService.getToken();
+
+    if (cachedUser && token) {
+      setCurrentUser(cachedUser);
       setMode('welcome');
+
+      void loginService.verifySession().then((verifiedUser) => {
+        if (!isMounted) return;
+        if (verifiedUser) {
+          setCurrentUser(verifiedUser);
+          setMode('welcome');
+        } else {
+          setCurrentUser(null);
+          setMode('login');
+        }
+      });
+    } else if (cachedUser && !token) {
+      loginService.clearSession();
+      setCurrentUser(null);
+      setMode('login');
     }
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   const handleModeChange = (newMode: AuthViewMode) => {
@@ -111,7 +133,11 @@ export function LoginContainer() {
     try {
       const user = await loginService.login(loginValues);
       setCurrentUser(user);
-      navigate('/dashboard');
+      if (user.onboardingCompleted) {
+        navigate('/dashboard');
+      } else {
+        navigate('/onboarding');
+      }
     } catch (err: unknown) {
       setNotification({
         type: 'error',
@@ -151,11 +177,7 @@ export function LoginContainer() {
     try {
       const user = await loginService.register(registerValues);
       setPendingUser(user);
-      setMode('additional-data');
-      setNotification({
-        type: 'success',
-        message: `¡Cuenta creada para ${user.name}! Por favor, completa tus medidas para calibrar la app.`,
-      });
+      navigate('/onboarding');
     } catch (err: unknown) {
       setNotification({
         type: 'error',
@@ -187,7 +209,7 @@ export function LoginContainer() {
       newErrors.weight = 'Ingresa un peso válido en kg (ej. 75.5).';
     }
     const heightNum = parseInt(additionalValues.height, 10);
-    if (!additionalValues.height || isNaN(heightNum) || heightNum < 50 || heightNum > 260) {
+    if (!additionalValues.height || isNaN(heightNum) || heightNum < 40 || heightNum > 280) {
       newErrors.height = 'Ingresa una altura válida en cm (ej. 175).';
     }
     if (!additionalValues.sex) {
@@ -240,7 +262,7 @@ export function LoginContainer() {
   };
 
   const handleLogout = () => {
-    loginService.logout();
+    void loginService.logout();
     setCurrentUser(null);
     setPendingUser(null);
     setMode('login');

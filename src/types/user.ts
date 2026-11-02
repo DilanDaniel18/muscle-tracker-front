@@ -9,4 +9,8 @@ export interface User {
   weight?: number | null;
   height?: number | null;
   sex?: UserSex | null;
+  activityTypes?: string[];
+  isBeginner?: boolean;
+  exerciseFrequency?: string | null;
+  onboardingCompleted?: boolean;
 }
