@@ -9,6 +9,10 @@ export interface User {
   weight?: number | null;
   height?: number | null;
   sex?: UserSex | null;
+  activityTypes?: string[];
+  isBeginner?: boolean;
+  exerciseFrequency?: string | null;
+  onboardingCompleted?: boolean;
 }
 
 export interface RegisteredUser {
@@ -16,6 +20,25 @@ export interface RegisteredUser {
   name: string;
   lastName: string;
   email: string;
+  token?: string;
+  expiresIn?: string;
+  expiresAt?: string;
+}
+
+export interface AuthSession {
+  user: User;
+  token: string;
+  expiresIn: string;
+  expiresAt: string;
+}
+
+export interface ActiveSessionInfo {
+  user: User;
+  session: {
+    jti?: string;
+    issuedAt?: string;
+    expiresAt?: string;
+  };
 }
 
 export interface LoginCredentials {

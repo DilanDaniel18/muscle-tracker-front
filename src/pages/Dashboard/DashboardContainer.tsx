@@ -9,9 +9,31 @@ export function DashboardContainer() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    let isMounted = true;
     const currentUser = dashboardService.getCurrentUser();
+    const token = dashboardService.getToken();
+
+    if (!currentUser || !token) {
+      dashboardService.logout();
+      navigate('/', { replace: true });
+      return;
+    }
+
     setUser(currentUser);
-  }, []);
+
+    void dashboardService.verifySession().then((verifiedUser) => {
+      if (!isMounted) return;
+      if (verifiedUser) {
+        setUser(verifiedUser);
+      } else {
+        navigate('/', { replace: true });
+      }
+    });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [navigate]);
 
   const handleLogout = () => {
     dashboardService.logout();
@@ -20,7 +42,7 @@ export function DashboardContainer() {
   };
 
   const handleProfileClick = () => {
-    // Espacio para navegación o modal de perfil
+    navigate('/onboarding');
   };
 
   const handleSettingsClick = () => {
